@@ -40,6 +40,13 @@
             </label>
         </div>
         <div>
+            <div class="graph">
+                <div class="total">{{getTotalHours()}}</div>
+                <div class="bar">
+                    <div class="segment incomplete">{{getTotalHours() - getSumOfCompletedHours()}}</div>
+                    <div class="segment complete">{{getSumOfCompletedHours()}}</div> 
+                </div>
+            </div>
             <label ng-if="member">
                 <input type="checkbox" ng-model="showRemaining" style="display: none;"/>
                 <span ng-if="!showRemaining">

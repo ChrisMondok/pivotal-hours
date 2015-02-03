@@ -46,3 +46,21 @@ pre {
 .comment pre {
 	padding: 10px;
 }
+
+.graph .bar {
+    display: flex;
+    flex-direction: row;
+    max-width: 400px;
+}
+
+.bar-graph-segment {
+    height: 12px;
+}
+
+.bar-graph-segment .incomplete {
+    background-color: red;
+}
+
+.bar-graph-segment .complete {
+    background-color: green;
+}
