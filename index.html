@@ -40,28 +40,17 @@
             </label>
         </div>
         <div>
-            <div class="graph">
+            <div ng-if="member" class="graph">
                 <div class="total">{{getTotalHours()}}</div>
                 <div class="bar">
-                    <div class="segment incomplete">{{getTotalHours() - getSumOfCompletedHours()}}</div>
-                    <div class="segment complete">{{getSumOfCompletedHours()}}</div> 
+                    <div class="bar-graph-segment incomplete" title="incomplete" data-ng-style="{'flex-grow': getTotalHours() - getSumOfCompletedHours(), 'flex-shrink': getTotalHours() - getSumOfCompletedHours()}">
+                        <div class="label">{{getTotalHours() - getSumOfCompletedHours()}}</div>
+                    </div>
+                    <div class="bar-graph-segment complete" title="complete" data-ng-style="{'flex-grow': getSumOfCompletedHours(), 'flex-shrink': getSumOfCompletedHours()}">
+                        <div class="label">{{getSumOfCompletedHours()}}</div>
+                    </div>
                 </div>
             </div>
-            <label ng-if="member">
-                <input type="checkbox" ng-model="showRemaining" style="display: none;"/>
-                <span ng-if="!showRemaining">
-                    <span class="fraction">
-                        <sup class="top">{{getSumOfCompletedHours()}}</sup>&frasl;<sub class="bottom">{{getTotalHours()}}</sub>
-                    </span>
-                    Completed
-                </span>
-                <span ng-if="showRemaining">
-                    <span class="fraction">
-                        <sup class="top">{{getTotalHours() - getSumOfCompletedHours()}}</sup>&frasl;<sub class="bottom">{{getTotalHours()}}</sub>
-                    </span>
-                    Remaining
-                </span>
-            </label>
             <ul class="story-list">
                 <li data-ng-repeat="story in stories" data-state="{{story.current_state}}" class="story">
                     <div>
